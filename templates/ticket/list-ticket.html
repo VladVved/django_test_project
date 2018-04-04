@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div style="margin-left: 70px; margin-top: 150px; margin-bottom: 30px">
+        {% for ticket in tickets %}
+            <h5>{{ ticket.title }}</h5>
+            <p>{{ ticket.text }}</p>
+            <a href="{% url 'update-ticket' pk=ticket.id %}" class="btn btn-primary" ">Редактировать</a>
+        {% endfor %}
+    </div>
+{% endblock content %}

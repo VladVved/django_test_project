@@ -1,5 +1,15 @@
-{% for new in news %}
-    <h2><a href="{% url 'new_single' pk=new.id %}"</a> {{ new.title }}</h2>
-    <p>{{ new.text_min }}</p>
-    <p>{{ new.created }}</p>
-{% endfor %}
+{% extends 'news/base.html' %}
+{% block search %}
+    <a href="{% url 'news_filter' pk=1 %}"><button type="button" class="btn btn-primary">Неделя</button></a>
+    <a href="{% url 'news_filter' pk=2 %}"><button type="button" class="btn btn-primary">Месяц</button></a>
+    <a href="{% url 'news_filter' pk=3 %}"><button type="button" class="btn btn-primary">Все</button></a>
+{% endblock search %}
+{% block content %}
+    <div style="margin-left: 70px; margin-top: 100px; margin-bottom: 30px">
+    {% for new in news %}
+        <h2><a href="{% url 'new_single' pk=new.id %}"</a> {{ new.title }}</h2>
+        <p>{{ new.text_min|safe}}</p>
+        <p>{{ new.created }}</p>
+    {% endfor %}
+    </div>
+{% endblock content %}
